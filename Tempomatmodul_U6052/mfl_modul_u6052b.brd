@@ -1712,7 +1712,7 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C025-025X050" package3d_urn="urn:adsk.eagle:package:23629/2" value="1nF" x="54.61" y="23.495" smashed="yes">
+<element name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C025-025X050" package3d_urn="urn:adsk.eagle:package:23629/2" value="680pF" x="54.61" y="23.495" smashed="yes">
 <attribute name="NAME" x="58.801" y="22.479" size="1.27" layer="25" font="vector" ratio="15" rot="R90"/>
 <attribute name="SPICEPREFIX" value="C" x="54.61" y="23.495" size="1.778" layer="27" display="off"/>
 </element>
@@ -1790,7 +1790,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="40.513" y="22.86" size="1.27" layer="25" font="vector" ratio="15" rot="R90"/>
 <attribute name="SPICEPREFIX" value="R" x="45.72" y="23.495" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" package="0207/7" package3d_urn="urn:adsk.eagle:package:23493/1" value="200k" x="56.515" y="7.62" smashed="yes">
+<element name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" package="0207/7" package3d_urn="urn:adsk.eagle:package:23493/1" value="69k6" x="56.515" y="7.62" smashed="yes">
 <attribute name="NAME" x="62.738" y="6.35" size="1.27" layer="25" font="vector" ratio="15" rot="R90"/>
 <attribute name="SPICEPREFIX" value="R" x="56.515" y="7.62" size="1.778" layer="27" display="off"/>
 </element>

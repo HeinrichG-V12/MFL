@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -20324,9 +20324,9 @@ Source: &lt;a href="http://pewa.panasonic.com/assets/pcsd/catalog/pf-catalog.pdf
 <part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:15797/1" value="led grün 2,2v 20mA"/>
 <part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:23493/1" value="560"/>
 <part name="P+1" library="microbuilder" deviceset="VCC" device=""/>
-<part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="025-025X050" package3d_urn="urn:adsk.eagle:package:23629/2" value="1nF"/>
+<part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="025-025X050" package3d_urn="urn:adsk.eagle:package:23629/2" value="680pF"/>
 <part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:23493/1" value="100"/>
-<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:23493/1" value="200k"/>
+<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:23493/1" value="69k6"/>
 <part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:23493/1" value="200"/>
 <part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:23493/1" value="931"/>
 <part name="R6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:23493/1" value="665"/>
@@ -20365,7 +20365,8 @@ Source: &lt;a href="http://pewa.panasonic.com/assets/pcsd/catalog/pf-catalog.pdf
 <sheets>
 <sheet>
 <plain>
-<text x="83.82" y="147.32" size="1.778" layer="97">logische Ausgänge, 25V und bis 200mA</text>
+<text x="83.82" y="147.32" size="1.778" layer="97">logische Ausgänge, 25V und bis 200mA
+Fosc = 25689,82Hz</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
@@ -20480,8 +20481,8 @@ Source: &lt;a href="http://pewa.panasonic.com/assets/pcsd/catalog/pf-catalog.pdf
 <net name="OSC" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="OSC"/>
-<wire x1="86.36" y1="99.06" x2="78.74" y2="99.06" width="0.1524" layer="91"/>
-<label x="78.74" y="99.06" size="1.778" layer="95" rot="R180" xref="yes"/>
+<wire x1="86.36" y1="99.06" x2="71.12" y2="99.06" width="0.1524" layer="91"/>
+<label x="71.12" y="99.06" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R3" gate="G$1" pin="2"/>
@@ -20496,8 +20497,8 @@ Source: &lt;a href="http://pewa.panasonic.com/assets/pcsd/catalog/pf-catalog.pdf
 <net name="VS" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="VS"/>
-<wire x1="86.36" y1="129.54" x2="78.74" y2="129.54" width="0.1524" layer="91"/>
-<label x="78.74" y="129.54" size="1.778" layer="95" rot="R180" xref="yes"/>
+<wire x1="86.36" y1="129.54" x2="71.12" y2="129.54" width="0.1524" layer="91"/>
+<label x="71.12" y="129.54" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R10" gate="G$1" pin="2"/>
@@ -20578,8 +20579,8 @@ Source: &lt;a href="http://pewa.panasonic.com/assets/pcsd/catalog/pf-catalog.pdf
 <net name="VSTAB" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="VSTAB"/>
-<wire x1="86.36" y1="124.46" x2="78.74" y2="124.46" width="0.1524" layer="91"/>
-<label x="78.74" y="124.46" size="1.778" layer="95" rot="R180" xref="yes"/>
+<wire x1="86.36" y1="124.46" x2="71.12" y2="124.46" width="0.1524" layer="91"/>
+<label x="71.12" y="124.46" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R3" gate="G$1" pin="1"/>
@@ -20807,6 +20808,10 @@ Source: &lt;a href="http://pewa.panasonic.com/assets/pcsd/catalog/pf-catalog.pdf
 </schematic>
 </drawing>
 <compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
 <note version="8.2" severity="warning">
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)
