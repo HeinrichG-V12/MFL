@@ -14,13 +14,17 @@
 
 #include <cr_section_macros.h>
 #include "i2c/i2c.h"
+#include "ibus/ibus.h"
+#include "adc/adc.h"
 
 int main(void) {
 
 	SystemInit();
-	SysTick_Config(SystemCoreClock/1000);
+	SysTick_Config(SystemCoreClock / 1000);
 	I2CInit(I2CMASTER);
+	adc_init();
 
+	test();
 
     // TODO: insert code here
 
