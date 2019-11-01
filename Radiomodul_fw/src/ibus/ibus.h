@@ -9,6 +9,9 @@
 #define IBUS_IBUS_H_
 
 #include <stdint.h>
+#include <LPC13xx.h>
+#include "../uart/uart.h"
+#include <stdlib.h>
 
 typedef struct {
 	uint8_t src;
@@ -17,6 +20,8 @@ typedef struct {
 	uint8_t *data;
 	uint8_t crc;
 } ibus_msg;
+
+void update_crc (ibus_msg *msg);
 
 void send_message( ibus_msg *msg );
 

@@ -35,7 +35,7 @@ For master read: the sequence is: STA,Addr(W),offset,RE-STA,Addr(r),data...STO
 for master write: the sequence is: STA,Addr(W),offset,RE-STA,Addr(w),data...STO
 Thus, in state 8, the address is always WRITE. in state 10, the address could 
 be READ or WRITE depending on the I2C command.
-*/   
+*/
 
 /*****************************************************************************
 ** Function name:		I2C_IRQHandler

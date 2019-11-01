@@ -28,10 +28,16 @@ void init_uart(void) {
 	LPC_UART->FCR |= Ux_FIFO_EN | Rx_FIFO_RST | Tx_FIFO_RST;
 	LPC_UART->FDR = (DEF_MULVAL<<4) | DEF_DIVADDVAL; /* MULVAL=15(bits - 7:4) , DIVADDVAL=2(bits - 3:0)  */
 	LPC_UART->LCR &= ~(DLAB_BIT);
+
+	NVIC_EnableIRQ(UART_IRQn);
 }
 
 void send_char (uint8_t data) {
 	while(!(LPC_UART->LSR & THRE)); //wait until THR is empty
 	//now we can write to Tx FIFO
 	LPC_UART->THR = data;
+}
+
+void UART_IRQHandler() {
+
 }
