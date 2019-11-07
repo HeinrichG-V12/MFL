@@ -11,11 +11,13 @@
 #include <LPC13xx.h>
 
 void init_uart(void) {
-	LPC_IOCON->PIO1_6 = 0x1; //Select RXD for PIO1_6
-	LPC_IOCON->PIO1_7 = 0x1; //Select RXD for PIO2_6
+	LPC_IOCON->PIO1_6 &= ~0x07;
+	LPC_IOCON->PIO1_6 |= 0x1; 		//Select RXD for PIO1_6
+	LPC_IOCON->PIO1_7 &= ~0x07;
+	LPC_IOCON->PIO1_7 |= 0x1; 		//Select RXD for PIO2_7
 
 	//UART CLOCK Enable Sequence Step 2 - Set Divider & Enable Clock
-	LPC_SYSCON->UARTCLKDIV = 1; //Set Divider by 1, so UART_PCLK=CCLK
+	LPC_SYSCON->UARTCLKDIV = 1; 	//Set Divider by 1, so UART_PCLK=CCLK
 	LPC_SYSCON->SYSAHBCLKCTRL |= (1<<12);//Enable UART clock
 
 	LPC_UART->LCR = (0x3 << 0)	// 8 bit, 1 stop bit
