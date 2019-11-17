@@ -35,11 +35,11 @@ void init_uart(void) {
 }
 
 void send_char (uint8_t data) {
-	while(!(LPC_UART->LSR & THRE)); //wait until THR is empty
+	while (!(LPC_UART->LSR & IER_THRE))
+		; //wait until THR is empty
 	//now we can write to Tx FIFO
 	LPC_UART->THR = data;
 }
 
-void UART_IRQHandler() {
-
+void UART_IRQHandler( void ) {
 }

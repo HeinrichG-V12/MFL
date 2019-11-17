@@ -14,7 +14,9 @@
 // settings for iBus: 9600 8E1
 
 
-#define THRE        (1<<5) //Transmit Holding Register Empty
+#define IER_RBR		0x01
+#define IER_THRE	0x02	//Transmit Holding Register Empty
+#define IER_RLS		0x04
 #define DEF_DLL			213
 #define	DEF_DLM			1
 #define DEF_MULVAL      1
@@ -25,6 +27,7 @@
 #define DLAB_BIT    (1<<7)
 
 void init_uart(void);
+void UART_IRQHandler( void );
 void send_char (uint8_t data);
 
 #endif /* UART_UART_H_ */

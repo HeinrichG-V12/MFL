@@ -7,6 +7,9 @@
 
 #include "ibus.h"
 
+ibus_msg RX_BUFFER[RX_BUFFER_SIZE];
+ibus_msg TX_BUFFER[TX_BUFFER_SIZE];
+
 void send_message( ibus_msg *msg ) {
 
 	update_crc(msg);
@@ -19,7 +22,7 @@ void send_message( ibus_msg *msg ) {
 		send_char(msg->data[i]);
 	}
 	send_char(msg->crc);
-	LPC_UART->FCR |= Rx_FIFO_RST | Tx_FIFO_RST;
+	LPC_UART->FCR |= Rx_FIFO_RST;
 	NVIC_EnableIRQ(UART_IRQn);
 }
 

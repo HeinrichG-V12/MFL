@@ -13,6 +13,9 @@
 #include "../uart/uart.h"
 #include <stdlib.h>
 
+#define RX_BUFFER_SIZE	5
+#define TX_BUFFER_SIZE	5
+
 typedef struct {
 	uint8_t src;
 	uint8_t len;
