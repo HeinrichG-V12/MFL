@@ -65,6 +65,7 @@
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="58" name="bCAD" color="11" fill="1" visible="no" active="no"/>
 <layer number="59" name="tPartCopper" color="7" fill="1" visible="no" active="no"/>
 <layer number="60" name="Board" color="7" fill="1" visible="no" active="no"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
@@ -26571,8 +26572,8 @@ Source: www.rsonline.de .. SMBJ12/C/15/C/24/C/30/C/5.0/C/7.5/C Voltage Suppresso
 <part name="IC7" library="Heinrich" deviceset="NCV4274C" device="SOT-223"/>
 <part name="U$33" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$34" library="microbuilder" deviceset="GND" device=""/>
-<part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
-<part name="C15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
+<part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1210" package3d_urn="urn:adsk.eagle:package:23619/2" value="100nF"/>
+<part name="C15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1210" package3d_urn="urn:adsk.eagle:package:23619/2" value="100nF"/>
 <part name="U$38" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$41" library="microbuilder" deviceset="GND" device=""/>
 <part name="D1" library="Heinrich" deviceset="P6SMBXXCA" device="" value="SMBJ36CA"/>
@@ -26591,6 +26592,12 @@ Source: www.rsonline.de .. SMBJ12/C/15/C/24/C/30/C/5.0/C/7.5/C Voltage Suppresso
 <part name="P+3" library="microbuilder" deviceset="VCC" device=""/>
 <part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+12V" device=""/>
 <part name="P+5" library="microbuilder" deviceset="VCC" device=""/>
+<part name="C20" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1210" package3d_urn="urn:adsk.eagle:package:23619/2" value="10µF"/>
+<part name="C21" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1210" package3d_urn="urn:adsk.eagle:package:23619/2" value="22µF"/>
+<part name="U$43" library="microbuilder" deviceset="GND" device=""/>
+<part name="U$44" library="microbuilder" deviceset="GND" device=""/>
+<part name="C22" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100nF"/>
+<part name="U$45" library="microbuilder" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -26972,22 +26979,15 @@ Orange, 20mA, 2,35V</text>
 <net name="RXD" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="PIO1_6/RXD/CT32B0_MAT0"/>
-<wire x1="129.54" y1="91.44" x2="144.78" y2="91.44" width="0.1524" layer="91"/>
-<label x="137.16" y="91.44" size="1.778" layer="95"/>
+<wire x1="129.54" y1="91.44" x2="139.7" y2="91.44" width="0.1524" layer="91"/>
+<label x="134.62" y="91.44" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="TXD" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="PIO1_7/TXD/CT32B0_MAT1"/>
-<wire x1="129.54" y1="88.9" x2="144.78" y2="88.9" width="0.1524" layer="91"/>
-<label x="137.16" y="88.9" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="/SEN" class="0">
-<segment>
-<pinref part="U1" gate="G$1" pin="PIO1_5/!RTS!/CT32B0_CAP0"/>
-<wire x1="129.54" y1="93.98" x2="144.78" y2="93.98" width="0.1524" layer="91"/>
-<label x="137.16" y="93.98" size="1.778" layer="95"/>
+<wire x1="129.54" y1="88.9" x2="139.7" y2="88.9" width="0.1524" layer="91"/>
+<label x="134.62" y="88.9" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RING" class="0">
@@ -26995,6 +26995,18 @@ Orange, 20mA, 2,35V</text>
 <pinref part="U1" gate="G$1" pin="PIO0_3/USB_VBUS"/>
 <wire x1="35.56" y1="99.06" x2="20.32" y2="99.06" width="0.1524" layer="91"/>
 <label x="20.32" y="99.06" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="/SEN" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="PIO0_7/!CTS!"/>
+<wire x1="35.56" y1="88.9" x2="20.32" y2="88.9" width="0.1524" layer="91"/>
+<label x="20.32" y="88.9" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="PIO2_1/!DSR!"/>
+<wire x1="129.54" y1="71.12" x2="139.7" y2="71.12" width="0.1524" layer="91"/>
+<label x="134.62" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -27073,7 +27085,7 @@ Orange, 20mA, 2,35V</text>
 <wire x1="175.26" y1="119.38" x2="172.72" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="R_BASE" class="0">
+<net name="R_SLEEVE" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="W2"/>
 <wire x1="172.72" y1="114.3" x2="190.5" y2="114.3" width="0.1524" layer="91"/>
@@ -27192,6 +27204,10 @@ Orange, 20mA, 2,35V</text>
 <instance part="P+2" gate="VCC" x="68.58" y="114.3" rot="R90"/>
 <instance part="P+3" gate="VCC" x="68.58" y="88.9" rot="R90"/>
 <instance part="P+4" gate="1" x="12.7" y="109.22" rot="R90"/>
+<instance part="C20" gate="G$1" x="119.38" y="109.22"/>
+<instance part="C21" gate="G$1" x="119.38" y="83.82"/>
+<instance part="U$43" gate="G$1" x="119.38" y="99.06"/>
+<instance part="U$44" gate="G$1" x="119.38" y="73.66"/>
 </instances>
 <busses>
 </busses>
@@ -27229,19 +27245,37 @@ Orange, 20mA, 2,35V</text>
 <wire x1="40.64" y1="99.06" x2="40.64" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="U$46" gate="G$1" pin="GND"/>
 </segment>
+<segment>
+<pinref part="C20" gate="G$1" pin="2"/>
+<pinref part="U$43" gate="G$1" pin="GND"/>
+<wire x1="119.38" y1="104.14" x2="119.38" y2="101.6" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C21" gate="G$1" pin="2"/>
+<pinref part="U$44" gate="G$1" pin="GND"/>
+<wire x1="119.38" y1="78.74" x2="119.38" y2="76.2" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="3.3V" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="OUT"/>
-<wire x1="104.14" y1="114.3" x2="124.46" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="114.3" x2="119.38" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="U$50" gate="G$1" pin="3.3V"/>
+<pinref part="C20" gate="G$1" pin="1"/>
+<wire x1="119.38" y1="114.3" x2="124.46" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="111.76" x2="119.38" y2="114.3" width="0.1524" layer="91"/>
+<junction x="119.38" y="114.3"/>
 </segment>
 </net>
 <net name="5.0V" class="0">
 <segment>
 <pinref part="IC7" gate="G$1" pin="OUT"/>
-<wire x1="104.14" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="88.9" x2="119.38" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="U$51" gate="G$1" pin="5.0V"/>
+<pinref part="C21" gate="G$1" pin="1"/>
+<wire x1="119.38" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="86.36" x2="119.38" y2="88.9" width="0.1524" layer="91"/>
+<junction x="119.38" y="88.9"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -27306,6 +27340,8 @@ Orange, 20mA, 2,35V</text>
 <instance part="C19" gate="G$1" x="78.74" y="91.44"/>
 <instance part="U$48" gate="G$1" x="78.74" y="81.28"/>
 <instance part="P+5" gate="VCC" x="104.14" y="96.52" rot="R270"/>
+<instance part="C22" gate="G$1" x="111.76" y="114.3"/>
+<instance part="U$45" gate="G$1" x="111.76" y="104.14"/>
 </instances>
 <busses>
 </busses>
@@ -27342,12 +27378,21 @@ Orange, 20mA, 2,35V</text>
 <wire x1="78.74" y1="86.36" x2="78.74" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="U$48" gate="G$1" pin="GND"/>
 </segment>
+<segment>
+<pinref part="U$45" gate="G$1" pin="GND"/>
+<pinref part="C22" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="106.68" x2="111.76" y2="109.22" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="5.0V" class="0">
 <segment>
 <pinref part="IC6" gate="G$1" pin="VCC"/>
-<wire x1="114.3" y1="119.38" x2="104.14" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="119.38" x2="111.76" y2="119.38" width="0.1524" layer="91"/>
 <pinref part="U$36" gate="G$1" pin="5.0V"/>
+<pinref part="C22" gate="G$1" pin="1"/>
+<wire x1="111.76" y1="119.38" x2="104.14" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="116.84" x2="111.76" y2="119.38" width="0.1524" layer="91"/>
+<junction x="111.76" y="119.38"/>
 </segment>
 <segment>
 <pinref part="IC4" gate="G$1" pin="VCCB"/>
