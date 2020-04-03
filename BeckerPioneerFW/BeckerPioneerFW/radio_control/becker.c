@@ -8,6 +8,7 @@
 
 #include "becker.h"
 #include "global_types.h"
+#include "../timer/timer.h"
 
 uint8_t RELEASE[] = {STX, 0x30, 0x42, 0x46, 0x30, 0x35, 0x35, 0x30, 0x30, 0x41, 0x45, CR};
 
@@ -19,6 +20,7 @@ void b_init(void)
 	{
 		uart1_sendCommand(INIT);
 		// warte 500ms nach dem senden!
+		timer_delay_ms(500);
 	}
 }
 
@@ -26,7 +28,8 @@ void b_next(void)
 {
 	// STX 0 B F 0 9 9 0 1 6 3 CR
 	// warte 80ms
-	// sende RELEASE 
+	timer_delay_ms(80);
+	uart1_sendCommand(RELEASE);
 }
 
 void b_next_long(void)

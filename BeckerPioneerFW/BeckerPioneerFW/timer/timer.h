@@ -15,7 +15,7 @@ void timer0_init(void);
 uint8_t timer0_getValue(void);
 void timer0_reset(void);
 
-
+void timer_delay_ms (uint16_t delay);
 
 
 #endif /* TIMER_H_ */

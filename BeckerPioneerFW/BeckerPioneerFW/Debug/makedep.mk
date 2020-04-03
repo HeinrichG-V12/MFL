@@ -4,6 +4,8 @@
 
 adc\adc.c
 
+ibus\buffer.c
+
 ibus\ibus.c
 
 main.c
