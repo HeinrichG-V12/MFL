@@ -22,7 +22,7 @@ void send_ibus (uint8_t *data)
 	uart0_rtx();
 }
 
-void set_bright (void)
+void set_brightness (void)
 {
 	uint8_t msg[6];
 	msg[0] = LKM;
