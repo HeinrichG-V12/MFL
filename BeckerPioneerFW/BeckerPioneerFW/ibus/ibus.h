@@ -42,7 +42,7 @@
 #define	MIC_RELEAS		0xA0
 #define MIC_LONG_PRESS	0x90
 
-
+void set_brightness (void);
 
 
 #endif /* IBUS_H_ */

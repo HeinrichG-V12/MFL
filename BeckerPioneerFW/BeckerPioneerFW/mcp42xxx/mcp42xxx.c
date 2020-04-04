@@ -9,11 +9,15 @@
 
 void mcp42xxx_write (uint8_t channel, uint8_t value)
 {
+	DESELECT_CS();
 	spi_write(OP_WRITE + channel);
 	spi_write(value);
+	SELECT_CS();
 }
 
 void mcp42xxx_shutdown (uint8_t channel)
 {
+	DESELECT_CS();
 	spi_write(OP_SHUTDOWN + channel);
+	SELECT_CS();
 }

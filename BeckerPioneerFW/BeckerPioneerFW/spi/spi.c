@@ -9,9 +9,10 @@
 
 void spi_init(void)
 {
-	// spi master, 128 divider
-	SPCR |= (1 << SPE)|(1 << MSTR)|(1 << SPR1)|(1 << SPR0);
-	
+	// spi master, 16 divider = 921,6kHz spi freq
+	DDR_SPI |= (1 << DD_MOSI)|(1 << DD_SCK)|(1 << DD_CS);
+	SELECT_CS();
+	SPCR |= (1 << SPE)|(1 << MSTR)|(1 << SPR0);
 }
 
 void spi_write (uint8_t data)

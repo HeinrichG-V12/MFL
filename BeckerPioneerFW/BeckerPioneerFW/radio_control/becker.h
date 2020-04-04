@@ -20,5 +20,6 @@ void b_back(void);
 void b_back_long(void);
 void b_increase(void);
 void b_decrease(void);
+void b_release (void);
 
 #endif /* BECKER_H_ */
