@@ -12,18 +12,13 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define MESSAGE_LENGHT	48
-#define RX_MESSAGE_COUNT 5
-#define TX_MESSAGE_COUNT 5
+#define MESSAGE_LENGHT	36
+#define RX_MESSAGE_COUNT 10
 
 void init_buffer (void);
 void rx_buffer_write_entry (uint8_t pos, uint8_t data);
 void rx_buffer_insertEntry (void);
 uint8_t* rx_buffer_get_entry (void);
 void rx_buffer_remove_entry (void);
-
-void tx_buffer_write_entry (uint8_t pos, uint8_t data);
-void tx_buffer_insertEntry (void);
-void tx_buffer_remove_entry (void);
 
 #endif /* BUFFER_H_ */

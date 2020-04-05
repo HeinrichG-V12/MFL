@@ -14,15 +14,17 @@
 #include <stdint.h>
 #include "../mcp42xxx/mcp42xxx.h"
 
-void p_source(void);
-void p_mute(void);
-void p_next(void);
-void p_back(void);
-void p_increase(void);
-void p_decrease(void);
-void p_list(void);
-void p_select(void);
-void p_mode(void);
+void pioneer_init (void);
+void pioneer_source (void);
+void pioneer_mute (void);
+void pioneer_next (void);
+void pioneer_back (void);
+void pioneer_increase (void);
+void pioneer_decrease (void);
+void pioneer_list (void);
+void pioneer_select (void);
+void pioneer_mode (void);
+void pioneer_release (void);
 
 
 

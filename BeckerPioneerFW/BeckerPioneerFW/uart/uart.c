@@ -9,8 +9,8 @@
 #include "uart.h"
 #include "../radio_control/global_types.h"
 
-#define UBRR0_REG	95	// 9600 @ 14.7456mhz
-#define UBRR1_REG	95	// 9600 @ 14.7456mhz
+#define UBRR0_REG	103	// 9600 @ 16mhz
+#define UBRR1_REG	103	// 9600 @ 16mhz
 
 void uart0_init(void)
 {
@@ -19,7 +19,7 @@ void uart0_init(void)
 	UCSR0B = (1 << RXEN0)|(1 << TXEN0)|(1 << RXCIE0);	// receiver and transceiver enabled, rx interrupt enabled
 	UCSR0C = (1 << UPM01)|(1 << UCSZ01)|(1 << UCSZ00);	// 8e1
 	
-	dummy = UDR0;	
+	dummy = UDR0;
 }
 
 void uart0_sendChar(uint8_t data)

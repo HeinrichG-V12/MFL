@@ -17,14 +17,6 @@ void spi_init(void)
 
 void spi_write (uint8_t data)
 {
-	while(!(SPSR & (1<<SPIF)));
-	SPDR=data;
-}
-
-uint8_t spi_write_read (uint8_t data)
-{
-	while(!(SPSR & (1<<SPIF)));
 	SPDR=data;
 	while(!(SPSR & (1<<SPIF)));
-	return SPDR;
 }

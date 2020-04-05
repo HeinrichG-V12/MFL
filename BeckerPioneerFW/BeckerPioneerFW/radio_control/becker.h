@@ -13,13 +13,13 @@
 #include "../mcp42xxx/mcp42xxx.h"
 #include "../uart/uart.h"
 
-void b_init(void);
-void b_next(void);
-void b_next_long(void);
-void b_back(void);
-void b_back_long(void);
-void b_increase(void);
-void b_decrease(void);
-void b_release (void);
+void becker_init(void);
+void becker_next(void);
+void becker_next_long(void);
+void becker_back(void);
+void becker_back_long(void);
+void becker_increase(void);
+void becker_decrease(void);
+void becker_release (void);
 
 #endif /* BECKER_H_ */

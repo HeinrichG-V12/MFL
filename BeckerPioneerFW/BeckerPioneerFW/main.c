@@ -17,7 +17,7 @@ int main(void)
 {
 	uart0_init();
 	uart1_init();
-	b_init();
+	becker_init();
 	
     /* Replace with your application code */
     while (1) 

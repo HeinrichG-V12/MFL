@@ -20,11 +20,7 @@
 #define SELECT_CS()		(PORTB |= (1 << DD_CS))
 #define DESELECT_CS()	(PORTB &= ~(1 << DD_CS))
 
-
-
-
 void spi_init(void);
 void spi_write (uint8_t data);
-uint8_t spi_write_read (uint8_t data);
 
 #endif /* SPI_H_ */
