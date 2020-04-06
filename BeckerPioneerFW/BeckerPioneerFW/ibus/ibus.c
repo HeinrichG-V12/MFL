@@ -37,8 +37,8 @@ void send_ibus_message (uint8_t *data)
 ISR(USART0_RX_vect)
 {
 	uint8_t byte, timer_value;
-	static uint8_t rx_position;
-		
+	static uint8_t rx_position, msg_length;
+	
 	byte = UDR0;
 	timer_value = timer0_getValue();
 	
@@ -48,7 +48,30 @@ ISR(USART0_RX_vect)
 		rx_buffer_write_entry(0, byte);
 		irqStatus = waitingForLen;
 	}
-	
-	
+	else
+	{
+		switch(irqStatus)
+		{
+			case waitingForLen:
+			// second byte of the ibus message
+			rx_buffer_write_entry(1, byte);
+			irqStatus = rxActive;
+			rx_position = 1;
+			msg_length = byte;
+			break;
+			
+			case rxActive:
+			rx_position++;
+			rx_buffer_write_entry(rx_position, byte);
+			
+			if (msg_length == rx_position-2)
+			{
+				rx_buffer_insertEntry();
+				irqStatus = standby;
+			}
+			
+			break;
+		}
+	}
 	timer0_reset();
 }
