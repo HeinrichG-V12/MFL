@@ -39,6 +39,11 @@ uint8_t* rx_buffer_get_entry (void)
 	return rx_buffer[rx_consumer_ptr];
 }
 
+uint8_t rx_buffer_get_depth (void)
+{
+	return (rx_producer_ptr - rx_consumer_ptr);
+}
+
 void rx_buffer_remove_entry (void)
 {
 	rx_consumer_ptr++;

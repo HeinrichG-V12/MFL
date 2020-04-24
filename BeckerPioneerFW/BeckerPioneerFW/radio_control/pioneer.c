@@ -10,7 +10,9 @@
 
 void pioneer_init (void)
 {
-	mcp42xxx_shutdown(BOTH_POTS);
+	spi_init();
+	mcp42xxx_write(FIRST_POT, 1);
+	mcp42xxx_write(SECOND_POT, 1);
 }
 
 void pioneer_source(void)
@@ -80,5 +82,6 @@ void pioneer_mode(void)
 
 void pioneer_release(void)
 {
-	mcp42xxx_shutdown(BOTH_POTS);
+	mcp42xxx_write(FIRST_POT, 1);
+	mcp42xxx_write(SECOND_POT, 1);
 }

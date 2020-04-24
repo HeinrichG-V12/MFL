@@ -15,7 +15,9 @@
 void uart0_init(void)
 {
 	uint8_t dummy = 0;
-	UBRR0 = UBRR0_REG;
+	UBRR0 = 103;
+// 	UBRR0H = (unsigned char) (UBRR0_REG >> 8);
+// 	UBRR0L = (unsigned char) UBRR0_REG;
 	UCSR0B = (1 << RXEN0)|(1 << TXEN0)|(1 << RXCIE0);	// receiver and transceiver enabled, rx interrupt enabled
 	UCSR0C = (1 << UPM01)|(1 << UCSZ01)|(1 << UCSZ00);	// 8e1
 	
@@ -24,13 +26,14 @@ void uart0_init(void)
 
 void uart0_sendChar(uint8_t data)
 {
-	while (!( UCSR0A & (1<<UDRE0)));
+	while (!( UCSR0A & (1<<UDRE0))) {};
 	UDR0 = data;
 }
 
 void uart0_tx (void)
 {
-	UCSR0B = (1 << TXEN0);
+	//	UCSR0B = (1 << TXEN0);
+	UCSR0B &= ~(1 << RXEN0)|(1 << RXCIE0);
 }
 
 void uart0_rtx (void)
