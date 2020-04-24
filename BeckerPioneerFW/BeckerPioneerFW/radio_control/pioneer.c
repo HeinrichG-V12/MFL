@@ -42,7 +42,6 @@ void pioneer_back(void)
 	// 12k1
 	mcp42xxx_write(FIRST_POT, 226);
 	mcp42xxx_write(SECOND_POT, 225);
-	
 }
 
 void pioneer_increase(void)

@@ -47,6 +47,7 @@
 #include "../ibus/buffer.h"
 
 void set_brightness (void);
+void device_status_ready (uint8_t source);
 void device_status_ready_after_reset (uint8_t source);
 void ibus_processor (uint8_t *msg);
 

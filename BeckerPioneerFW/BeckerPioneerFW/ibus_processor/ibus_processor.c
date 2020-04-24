@@ -14,9 +14,23 @@ void set_brightness (void)
 {
 	uint8_t msg[5];
 	msg[0] = DEV_LKM;
-	msg[1] = 5;
+	msg[1] = 0x05;
 	msg[2] = DEV_GLO;
-	msg[3] = adc_value;
+	msg[3] = BRIGHTNESS;
+	msg[4] = adc_value;
+	msg[5] = 0x00;
+	
+	send_ibus_message(msg);
+}
+
+void device_status_ready (uint8_t source)
+{
+	uint8_t msg[5];
+	
+	msg[0] = source;
+	msg[1] = 0x04;
+	msg[2] = DEV_LOC;
+	msg[3] = 0x02;
 	msg[4] = 0x00;
 	
 	send_ibus_message(msg);
@@ -27,7 +41,7 @@ void device_status_ready_after_reset (uint8_t source)
 	uint8_t msg[5];
 	
 	msg[0] = source;
-	msg[1] = 4;
+	msg[1] = 0x04;
 	msg[2] = DEV_LOC;
 	msg[3] = 0x02;
 	msg[4] = 0x01;
