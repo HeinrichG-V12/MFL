@@ -5,6 +5,15 @@
  *  Author: Heinrich
  */
 
+#ifndef F_CPU
+/* Definiere F_CPU, wenn F_CPU nicht bereits vorher definiert 
+   (z.&nbsp;B. durch Übergabe als Parameter zum Compiler innerhalb 
+   des Makefiles). Zusätzlich Ausgabe einer Warnung, die auf die
+   "nachträgliche" Definition hinweist */
+#warning "F_CPU war noch nicht definiert, wird nun mit 16MHz definiert"
+#define F_CPU 16000000UL     /* Quarz mit 16 Mhz */
+#endif
+
 #include <avr/io.h>
 #include "adc/adc.h"
 #include "ibus_processor/ibus_processor.h"
@@ -24,7 +33,7 @@ int main(void)
 	
 	sei();
 		
-    while (1) 
+    while (1)
     {
 		depth = rx_buffer_get_depth();
 		

@@ -79,7 +79,7 @@ void pioneer_mode(void)
 	mcp42xxx_write(SECOND_POT, 135);
 }
 
-void pioneer_release(void)
+void pioneer_send_release(void)
 {
 	mcp42xxx_write(FIRST_POT, 1);
 	mcp42xxx_write(SECOND_POT, 1);

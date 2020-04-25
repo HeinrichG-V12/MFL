@@ -12,6 +12,7 @@
 #include "becker.h"
 #include "pioneer.h"
 #include "../timer/timer.h"
+#include <stdbool.h>
 
 void controller_init (void);
 void controller_increase (void);

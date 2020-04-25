@@ -6,6 +6,12 @@
  */ 
 
 #include "timer.h"
+#include "../radio_control/becker.h"
+#include <stdbool.h>
+#include <avr/interrupt.h>
+
+extern bool is_in_init;
+extern bool to_be_released;
 
 void timer0_init(void)
 {
@@ -37,9 +43,61 @@ void timer_delay_ms (uint16_t delay)
 	{
 		// timer5, prescaler 1, preload 49536, delay 0.
 		TCNT5 = 49536;
-		TCCR5B |= (1<<CS50);
+		TCCR5B |= (1 << CS50);
 		while ((TIFR5 & (1 << TOV5)) == 0);
 		TIFR5 |= (1 << TOV5);
 		delay--;
 	} while (delay > 0);
+}
+
+// timer für die Initialisierung des Becker-Interfaces, Timer feuert alle 500ms
+void becker_init_timer (void)
+{
+	TCNT4 = 34286;
+	TCCR4B |= (1 << CS42);
+	TIMSK4 |= (1 << TOIE4);
+}
+
+// timer zum senden des Release Befehls, Timer feuert alle 80ms
+void becker_release_timer (void)
+{
+	TCNT4 = 64286;
+	TCCR4B |= (1 << CS42)|(1 << CS40);
+	TIMSK4 |= (1 << TOIE4);
+}
+
+void becker_disable_init_timer (void)
+{
+	TCCR4B &= ~(0 << CS42);
+}
+
+void becker_disable_release_timer (void)
+{
+	TCCR4B &= ~((1 << CS42)|(1 << CS40));
+}
+
+ISR(TIMER4_OVF_vect)
+{
+	static uint8_t msgCounter = 0;
+	
+	if(is_in_init)
+	{
+		if (msgCounter < 8)
+		{
+			becker_init();
+			msgCounter++;
+		}
+		else
+		{
+			is_in_init = false;
+			becker_disable_init_timer();
+		}
+	}
+	
+	if(to_be_released)
+	{
+		becker_send_release();
+		to_be_released = false;
+		becker_disable_release_timer();
+	}
 }

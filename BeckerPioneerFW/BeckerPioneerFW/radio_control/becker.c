@@ -7,21 +7,22 @@
 
 
 #include "becker.h"
-#include "global_types.h"
 #include "../timer/timer.h"
+#include "global_types.h"
+#include <stdbool.h>
+#include <stdbool.h>
 
 uint8_t INIT[] = {STX, 0x30, 0x42, 0x46, 0x30, 0x35, 0x41, 0x41, 0x35, 0x30, 0x34, CR};
 	
 uint8_t RELEASE[] = {STX, 0x30, 0x42, 0x46, 0x30, 0x35, 0x35, 0x30, 0x30, 0x41, 0x45, CR};
 
+extern bool is_in_init;
+extern bool to_be_released;
+
 void becker_init(void)
 {
-	for (int i = 0; i <= 8; i++)
-	{
-		uart1_sendCommand(INIT);
-		// warte 500ms nach dem senden!
-		timer_delay_ms(500);
-	}
+	is_in_init = true;
+	becker_init_timer();
 }
 
 void becker_next(void)
@@ -66,7 +67,12 @@ void becker_decrease(void)
 	uart1_sendCommand(msg);
 }
 
-void becker_release (void)
+void becker_send_release (void)
 {
 	uart1_sendCommand(RELEASE);
+}
+
+void becker_send_init(void)
+{
+	uart1_sendCommand(INIT);
 }
