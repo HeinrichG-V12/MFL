@@ -68,12 +68,41 @@ void ibus_processor (uint8_t *msg)
 						case WHEEL_VOLUME:
 							switch (msg[IBUS_DATA])
 							{
-								case VOL_INC:
-									controller_increase();
+								case VOLUME_INC:
+									controller_volume_increase();
 								break;
 								
-								case VOL_DEC:
-									controller_decrease();
+								case VOLUME_DEC:
+									controller_volume_decrease();
+								break;
+							}
+						break;
+						
+						case WHEEL_SEARCH:
+							switch (msg[IBUS_DATA])
+							{
+								case SEARCH_UP:
+									controller_set_search(false);
+								break;
+								
+								case SEARCH_UP_LONG:
+									controller_set_search(true);
+								break;
+								
+								case SEARCH_UP_RELEASE:
+									controller_exec_search_up();
+								break;
+								
+								case SEARCH_DOWN:
+									controller_set_search(false);
+								break;
+								
+								case SEARCH_DOWN_LONG:
+									controller_set_search(false);
+								break;
+								
+								case SEARCH_DOWN_RELEASE:
+									controller_exec_search_down();
 								break;
 							}
 						break;
@@ -94,6 +123,23 @@ void ibus_processor (uint8_t *msg)
 					{
 						case DEVICE_STATUS_REQ:
 							device_status_ready_after_reset(DEV_TEL);						
+						break;
+						
+						case WHEEL_MICRO:
+							switch (msg[IBUS_DATA])
+							{
+								case MICRO:
+									controller_set_micro(false);
+								break;
+							
+								case MICRO_LONG:
+									controller_set_micro(true);
+								break;
+							
+								case MICRO_RELEASE:
+									controller_exec_micro();
+								break;
+							}
 						break;
 					}
 				break;

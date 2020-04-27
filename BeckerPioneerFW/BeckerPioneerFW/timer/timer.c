@@ -7,11 +7,12 @@
 
 #include "timer.h"
 #include "../radio_control/becker.h"
+#include "../radio_control/pioneer.h"
 #include <stdbool.h>
 #include <avr/interrupt.h>
 
-extern bool is_in_init;
-extern bool to_be_released;
+extern bool _is_in_init;
+extern bool _to_be_released;
 
 void timer0_init(void)
 {
@@ -59,7 +60,7 @@ void becker_init_timer (void)
 }
 
 // timer zum senden des Release Befehls, Timer feuert alle 80ms
-void becker_release_timer (void)
+void release_timer (void)
 {
 	TCNT4 = 64286;
 	TCCR4B |= (1 << CS42)|(1 << CS40);
@@ -71,7 +72,7 @@ void becker_disable_init_timer (void)
 	TCCR4B &= ~(0 << CS42);
 }
 
-void becker_disable_release_timer (void)
+void disable_release_timer (void)
 {
 	TCCR4B &= ~((1 << CS42)|(1 << CS40));
 }
@@ -80,24 +81,25 @@ ISR(TIMER4_OVF_vect)
 {
 	static uint8_t msgCounter = 0;
 	
-	if(is_in_init)
+	if(_is_in_init)
 	{
 		if (msgCounter < 8)
 		{
-			becker_init();
+			becker_send_init();
 			msgCounter++;
 		}
 		else
 		{
-			is_in_init = false;
+			_is_in_init = false;
 			becker_disable_init_timer();
 		}
 	}
 	
-	if(to_be_released)
+	if(_to_be_released)
 	{
 		becker_send_release();
-		to_be_released = false;
-		becker_disable_release_timer();
+		pioneer_send_release();
+		_to_be_released = false;
+		disable_release_timer();
 	}
 }

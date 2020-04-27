@@ -18,9 +18,10 @@ void becker_next(void);
 void becker_next_long(void);
 void becker_back(void);
 void becker_back_long(void);
-void becker_increase(void);
-void becker_decrease(void);
+void becker_volume_increase(void);
+void becker_volume_decrease(void);
 void becker_send_init(void);
+void becker_release (void);
 void becker_send_release(void);
 
 #endif /* BECKER_H_ */

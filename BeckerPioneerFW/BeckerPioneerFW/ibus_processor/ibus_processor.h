@@ -29,18 +29,27 @@
 #define DEVICE_STATUS_REQ			0x01
 #define WHEEL_VOLUME				0x32
 #define LIGHT_SENSOR				0x59
-#define	ARROWS						0x3B
-#define	RT							0x01
-#define	MIC							0x3B
+#define	WHEEL_SEARCH				0x3B
+#define	WHEEL_RT					0x01
+#define	WHEEL_MICRO					0x3B
 #define BRIGHTNESS					0x5C
 #define LIGHT_DIMMER_STATUS			0x5D
 
 // IBUS_DATA (byte 4 and more)
-#define	VOL_INC						0x11
-#define	VOL_DEC						0x01
-#define MIC_PRESS					0x80
-#define	MIC_RELEASE					0xA0
-#define MIC_LONG_PRESS				0x90
+#define	VOLUME_INC					0x11
+#define	VOLUME_DEC					0x10
+
+#define MICRO						0x80
+#define MICRO_LONG					0x90
+#define	MICRO_RELEASE				0xA0
+
+#define SEARCH_UP					0x01
+#define SEARCH_UP_LONG				0x11
+#define SEARCH_UP_RELEASE			0x21
+
+#define SEARCH_DOWN					0x08
+#define SEARCH_DOWN_LONG			0x18
+#define SEARCH_DOWN_RELEASE			0x28
 
 #include <stdint.h>
 #include "../ibus/ibus.h"

@@ -27,12 +27,12 @@ int main(void)
 	uint8_t* msg;
 	uint8_t depth = 0;
 	
+	sei();
+	
 	ibus_init();
 	controller_init();
-	adc_init();
-	
-	sei();
-		
+	// adc_init();
+
     while (1)
     {
 		depth = rx_buffer_get_depth();

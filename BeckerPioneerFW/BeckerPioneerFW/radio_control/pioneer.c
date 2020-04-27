@@ -7,12 +7,16 @@
 
 
 #include "pioneer.h"
+#include "../timer/timer.h"
+#include <stdbool.h>
+
+extern bool _is_in_init;
+extern bool _to_be_released;
 
 void pioneer_init (void)
 {
 	spi_init();
-	mcp42xxx_write(FIRST_POT, 1);
-	mcp42xxx_write(SECOND_POT, 1);
+	pioneer_send_release();
 }
 
 void pioneer_source(void)
@@ -44,14 +48,14 @@ void pioneer_back(void)
 	mcp42xxx_write(SECOND_POT, 225);
 }
 
-void pioneer_increase(void)
+void pioneer_volume_increase(void)
 {
 	// 16k8
 	mcp42xxx_write(FIRST_POT, 214);
 	mcp42xxx_write(SECOND_POT, 214);
 }
 
-void pioneer_decrease(void)
+void pioneer_volume_decrease(void)
 {
 	// 23k6
 	mcp42xxx_write(FIRST_POT, 196);
@@ -79,8 +83,13 @@ void pioneer_mode(void)
 	mcp42xxx_write(SECOND_POT, 135);
 }
 
+void pioneer_release(void)
+{
+	_to_be_released = true;
+	release_timer();
+}
+
 void pioneer_send_release(void)
 {
-	mcp42xxx_write(FIRST_POT, 1);
-	mcp42xxx_write(SECOND_POT, 1);
+	mcp42xxx_shutdown(BOTH_POTS);
 }

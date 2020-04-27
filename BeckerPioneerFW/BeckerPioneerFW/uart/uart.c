@@ -16,8 +16,6 @@ void uart0_init(void)
 {
 	uint8_t dummy = 0;
 	UBRR0 = 103;
-// 	UBRR0H = (unsigned char) (UBRR0_REG >> 8);
-// 	UBRR0L = (unsigned char) UBRR0_REG;
 	UCSR0B = (1 << RXEN0)|(1 << TXEN0)|(1 << RXCIE0);	// receiver and transceiver enabled, rx interrupt enabled
 	UCSR0C = (1 << UPM01)|(1 << UCSZ01)|(1 << UCSZ00);	// 8e1
 	
@@ -45,9 +43,11 @@ void uart1_init(void)
 {
 	uint8_t dummy = 0;
 	UBRR1 = UBRR0_REG;
-	UCSR1B = (1 << TXEN0);	// receiver and transceiver enabled
+	UCSR1B = (1 << TXEN1);	// transceiver enabled
 	UCSR1C = (1 << UCSZ11)|(1 << UCSZ10);	// 8n1
-	dummy = UDR0;	
+	dummy = UDR1;
+	
+	uart1_sendChar(0x35);
 }
 
 void uart1_sendChar(uint8_t data)
@@ -65,4 +65,6 @@ void uart1_sendCommand (uint8_t *data)
 		uart1_sendChar(data[i]);
 		i++;
 	}
+	
+	uart1_sendChar(CR);
 }

@@ -16,9 +16,9 @@ uint8_t timer0_getValue(void);
 void timer0_reset(void);
 void timer_delay_ms (uint16_t delay);
 void becker_init_timer (void);
-void becker_release_timer (void);
+void release_timer (void);
 void becker_disable_init_timer (void);
-void becker_disable_release_timer (void);
+void disable_release_timer (void);
 
 
 #endif /* TIMER_H_ */
