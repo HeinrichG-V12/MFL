@@ -10,7 +10,6 @@
 #ifndef BECKER_H_
 #define BECKER_H_
 
-#include "../mcp42xxx/mcp42xxx.h"
 #include "../uart/uart.h"
 
 void becker_init(void);

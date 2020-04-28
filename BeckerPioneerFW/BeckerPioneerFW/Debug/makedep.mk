@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+ad5293\ad5293.c
+
 adc\adc.c
 
 ibus\buffer.c
@@ -11,8 +13,6 @@ ibus\ibus.c
 ibus_processor\ibus_processor.c
 
 main.c
-
-mcp42xxx\mcp42xxx.c
 
 radio_control\becker.c
 
