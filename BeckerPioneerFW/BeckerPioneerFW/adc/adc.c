@@ -19,5 +19,5 @@ void adc_init (void)
 ISR(ADC_vect)
 {
 	// If the result is left adjusted and no more than 8-bit precision is required, it is sufficient to read ADCH
-	adc_value = ADCH;
+	adc_value = ADCH + 5;
 }

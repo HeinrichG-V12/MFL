@@ -8,6 +8,7 @@
 #include "timer.h"
 #include "../radio_control/becker.h"
 #include "../radio_control/pioneer.h"
+#include "../ibus_processor/ibus_processor.h"
 #include <stdbool.h>
 #include <avr/interrupt.h>
 
@@ -67,6 +68,13 @@ void release_timer (void)
 	TIMSK4 |= (1 << TOIE4);
 }
 
+void scheduler_init (void)
+{
+	TCNT3 = SCHEDULER_PRELOAD;
+	TCCR3B |= (1<<CS32);
+	TIMSK3 |= (1<<TOIE3);
+}
+
 void becker_disable_init_timer (void)
 {
 	TCCR4B &= ~(0 << CS42);
@@ -75,6 +83,12 @@ void becker_disable_init_timer (void)
 void disable_release_timer (void)
 {
 	TCCR4B &= ~((1 << CS42)|(1 << CS40));
+}
+
+ISR(TIMER3_OVF_vect)
+{
+	TCNT3 = SCHEDULER_PRELOAD;
+	set_brightness();
 }
 
 ISR(TIMER4_OVF_vect)

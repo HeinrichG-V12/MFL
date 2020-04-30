@@ -35,19 +35,17 @@ void sen_sta_init (void)
 
 void send_ibus_message (uint8_t *data)
 {
-	// sehr schmutzige Lösung um eine ibus botschaft zu senden....
-	timer_delay_ms(10);
 	uint8_t crc = 0, len = 0, t = 0;
 	len = data[1];
 
-// 	while (t < IBUS_PRIO1_DELAY)
-// 	{
-// 		if( !(PINE & (1<<PINE2)) ) {
-// 			timer0_reset();
-// 		}
-// 		
-// 		t = timer0_getValue();		
-// 	}
+	while (t < IBUS_PRIO1_DELAY)
+	{
+		if( PINE & (1<<PINE2) ) {	// sen/sta ist auf high, also wird gerade gesendet, ich muss die Klappe halten
+			timer0_reset();
+		}
+		
+		t = timer0_getValue();
+	}
 	
 	uart0_tx();
 		

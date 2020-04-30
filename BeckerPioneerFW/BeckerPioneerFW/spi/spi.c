@@ -12,7 +12,8 @@ void spi_init(void)
 	// spi master, 16 divider = 921,6kHz spi freq
 	DDR_SPI |= (1 << DD_MOSI)|(1 << DD_SCK)|(1 << DD_CS);
 	SELECT_CS();
-	SPCR |= (1 << SPE)|(1 << MSTR)|(1 << SPR0);
+	// SPCR |= (1 << SPE)|(1 << MSTR)|(1 << SPR0);	// SPI enable, Master mode, divider 16
+	SPCR |= (1 << SPE)|(1 << MSTR);	// SPI enable, Master mode, divider 4
 }
 
 void spi_write (uint8_t data)

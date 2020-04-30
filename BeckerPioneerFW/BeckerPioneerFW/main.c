@@ -28,10 +28,10 @@ int main(void)
 	uint8_t depth = 0;
 	
 	sei();
-	
+	adc_init();
 	ibus_init();
 	controller_init();
-	// adc_init();
+	scheduler_init();
 
     while (1)
     {

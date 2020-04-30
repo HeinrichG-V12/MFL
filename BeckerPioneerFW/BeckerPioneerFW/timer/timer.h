@@ -11,6 +11,8 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
+#define SCHEDULER_PRELOAD		46786		// 300ms preload
+
 void timer0_init(void);
 uint8_t timer0_getValue(void);
 void timer0_reset(void);
@@ -19,6 +21,7 @@ void becker_init_timer (void);
 void release_timer (void);
 void becker_disable_init_timer (void);
 void disable_release_timer (void);
+void scheduler_init (void);
 
 
 #endif /* TIMER_H_ */
