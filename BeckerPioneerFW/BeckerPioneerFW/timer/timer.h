@@ -23,5 +23,4 @@ void becker_disable_init_timer (void);
 void disable_release_timer (void);
 void scheduler_init (void);
 
-
 #endif /* TIMER_H_ */

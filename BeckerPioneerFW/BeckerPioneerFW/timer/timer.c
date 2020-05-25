@@ -99,6 +99,7 @@ ISR(TIMER4_OVF_vect)
 	{
 		if (msgCounter < 8)
 		{
+			TCNT4 = 34286;
 			becker_send_init();
 			msgCounter++;
 		}

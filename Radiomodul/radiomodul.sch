@@ -19813,12 +19813,14 @@ Source: 008-0260-0_E.pdf</description>
 <segment>
 <pinref part="IC5" gate="G$1" pin="T1OUT"/>
 <wire x1="203.2" y1="137.16" x2="220.98" y2="137.16" width="0.1524" layer="91"/>
+<label x="205.74" y="137.16" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="BECKER_RXD" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="R1IN"/>
 <wire x1="203.2" y1="132.08" x2="220.98" y2="132.08" width="0.1524" layer="91"/>
+<label x="205.74" y="132.08" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$4" class="0">

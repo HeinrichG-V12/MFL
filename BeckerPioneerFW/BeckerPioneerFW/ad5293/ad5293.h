@@ -11,6 +11,7 @@
 
 #include "../spi/spi.h"
 #include <stdint.h>
+#include <stdbool.h>
 
 #define OP_COM0		0x000	// NOP
 #define OP_COM1		0x400	// Write contents of serial register data to RDAC.
@@ -20,7 +21,9 @@
 #define OP_COM5		0x1C00	// Read control register from SDO output in the next frame.
 #define OP_COM6		0x2000	// Software power-down, normal mode or +0x1 for shutdown
 
+void ad5293_init (void);
+void ad5293_reset (void);
 void ad5293_write (uint16_t value);
-void ad5293_shutdown (void);
+void ad5293_shutdown (bool state);
 
 #endif /* AD5293_H_ */

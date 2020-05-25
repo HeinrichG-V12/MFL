@@ -7,7 +7,7 @@
 
 #include "adc.h"
 
-uint8_t adc_value = 250;
+uint8_t adc_value = 0;
 
 void adc_init (void)
 {
@@ -19,5 +19,12 @@ void adc_init (void)
 ISR(ADC_vect)
 {
 	// If the result is left adjusted and no more than 8-bit precision is required, it is sufficient to read ADCH
-	adc_value = ADCH + 5;
+	if (ADCH > 254) 
+	{
+		adc_value = 254;
+	}
+	else 
+	{
+		adc_value = ADCH;
+	}
 }

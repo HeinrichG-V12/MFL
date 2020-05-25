@@ -15,9 +15,8 @@ bool _micro_long = false;
 
 void controller_release (void)
 {
-	//becker_send_release();
-	becker_release();
-	pioneer_release();
+	_to_be_released = true;
+	release_timer();
 }
 
 void controller_init (void)
@@ -66,11 +65,13 @@ void controller_exec_search_up (void)
 	{
 		// langes druecken detektiert
 		becker_next_long();
+		pioneer_next_long();
 	}
 	else
 	{
 		// kurzes druecken detektiert	
 		becker_next();	
+		pioneer_next();
 	}
 	
 	controller_release();
@@ -82,11 +83,13 @@ void controller_exec_search_down (void)
 	{
 		// langes druecken detektiert
 		becker_back_long();
+		pioneer_back_long();
 	}
 	else
 	{
 		// kurzes druecken detektiert
 		becker_back();
+		pioneer_back();
 	}
 		
 	controller_release();

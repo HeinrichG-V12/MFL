@@ -14,6 +14,8 @@ ibus_processor\ibus_processor.c
 
 main.c
 
+mcp42050\mcp42xxx.c
+
 radio_control\becker.c
 
 radio_control\pioneer.c

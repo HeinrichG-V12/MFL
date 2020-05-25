@@ -21,9 +21,6 @@
 
 int main(void)
 {
-	// uint8_t data[] = {0xD0, 0x05, 0xBF, 0x5C, 0xFE, 0x00};
-	// send_ibus_message(data);
-	
 	uint8_t* msg;
 	uint8_t depth = 0;
 	
@@ -31,7 +28,7 @@ int main(void)
 	adc_init();
 	ibus_init();
 	controller_init();
-	scheduler_init();
+	// scheduler_init();
 
     while (1)
     {

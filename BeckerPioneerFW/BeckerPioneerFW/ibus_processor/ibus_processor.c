@@ -9,6 +9,7 @@
 #include "../radio_control/radio_controller.h"
 
 extern uint8_t adc_value;
+bool _scheduler_initialized = false;
 
 void set_brightness (void)
 {
@@ -21,6 +22,12 @@ void set_brightness (void)
 	msg[5] = 0x00;
 	
 	send_ibus_message(msg);
+	
+	if (!_scheduler_initialized)
+	{
+		scheduler_init();
+		_scheduler_initialized = true;
+	}
 }
 
 void device_status_ready (uint8_t source)
@@ -112,7 +119,7 @@ void ibus_processor (uint8_t *msg)
 				case DEV_LKM:
 					switch(msg[IBUS_FUNC])
 					{
-						case LIGHT_DIMMER_STATUS:
+						case LIGHT_DIMMER_STATUS:							
 							set_brightness();						
 						break;
 					}

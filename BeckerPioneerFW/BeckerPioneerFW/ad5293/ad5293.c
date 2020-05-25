@@ -7,31 +7,47 @@
 
 #include "ad5293.h"
 
-void ad5293_write (uint16_t value)
+void ad5293_init (void)
 {
+	uint16_t data = 0;
+	data |= (1 << 12)|(1 << 11)|(1 << 1);
+	DESELECT_CS();
+	spi_write16(data);
+	SELECT_CS();
+}
+
+void ad5293_write (uint16_t value)
+{	
 	uint16_t data;
-	
 	data = OP_COM1 + value;
 	DESELECT_CS();
-	spi_write((uint8_t)data);
-	spi_write((uint8_t)(data >> 8));
+	spi_write16(data);	
 	SELECT_CS();
 }
 
 void ad5293_reset (void)
 {
+	uint16_t data;
+	data = OP_COM3;
 	DESELECT_CS();
-	spi_write((uint8_t) OP_COM3);
-	spi_write((uint8_t)(OP_COM3 >> 8));
+	spi_write16(data);
 	SELECT_CS();
 }
 
-void ad5293_shutdown (void)
+void ad5293_shutdown (bool state)
 {
 	uint16_t data;
-	data = OP_COM6 + 0x1;
+	
+	if (state)
+	{
+		data = OP_COM6 + 0x1;		
+	}
+	else 
+	{
+		data = OP_COM6;
+	}
+	
 	DESELECT_CS();
-	spi_write((uint8_t)data);
-	spi_write((uint8_t)(data >> 8));
+	spi_write16(data);
 	SELECT_CS();
 }
