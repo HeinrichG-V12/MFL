@@ -25,5 +25,6 @@ void ad5293_init (void);
 void ad5293_reset (void);
 void ad5293_write (uint16_t value);
 void ad5293_shutdown (bool state);
+void ad5293_release (void);
 
 #endif /* AD5293_H_ */

@@ -16,9 +16,10 @@ void spi_init(void)
 	#ifdef AD5293
 	SPCR |= (1 << SPE)|(1 << MSTR)|(0 << CPOL)|(1 << CPHA)|(1 << SPR0);	// SPI enable, Master mode, divider 16, cpol = 0, cpha = 1, msb first
 	#endif // AD5293
+	
 	#ifdef MCP42050
 	SPCR |= (1 << SPE)|(1 << MSTR)|(1 << SPR0);
-	#endif // MCP42050	
+	#endif // MCP42050
 }
 
 void spi_write (uint8_t data)

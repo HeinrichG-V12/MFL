@@ -40,7 +40,7 @@ void ad5293_shutdown (bool state)
 	
 	if (state)
 	{
-		data = OP_COM6 + 0x1;		
+		data = OP_COM6 + 0x1;
 	}
 	else 
 	{
@@ -50,4 +50,9 @@ void ad5293_shutdown (bool state)
 	DESELECT_CS();
 	spi_write16(data);
 	SELECT_CS();
+}
+
+void ad5293_release (void)
+{
+	ad5293_write(1020);
 }

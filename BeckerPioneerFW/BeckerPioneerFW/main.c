@@ -24,11 +24,13 @@ int main(void)
 	uint8_t* msg;
 	uint8_t depth = 0;
 	
-	sei();
+	// sei();
 	adc_init();
 	ibus_init();
 	controller_init();
-	// scheduler_init();
+// 	// scheduler_init();
+	
+	
 
     while (1)
     {
