@@ -7,7 +7,7 @@
 
 #ifndef F_CPU
 /* Definiere F_CPU, wenn F_CPU nicht bereits vorher definiert 
-   (z.&nbsp;B. durch Übergabe als Parameter zum Compiler innerhalb 
+   (z.B. durch Übergabe als Parameter zum Compiler innerhalb 
    des Makefiles). Zusätzlich Ausgabe einer Warnung, die auf die
    "nachträgliche" Definition hinweist */
 #warning "F_CPU war noch nicht definiert, wird nun mit 16MHz definiert"
@@ -24,13 +24,10 @@ int main(void)
 	uint8_t* msg;
 	uint8_t depth = 0;
 	
-	// sei();
+	sei();
 	adc_init();
 	ibus_init();
 	controller_init();
-// 	// scheduler_init();
-	
-	
 
     while (1)
     {
