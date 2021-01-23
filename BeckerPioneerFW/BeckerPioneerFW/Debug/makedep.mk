@@ -2,8 +2,6 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-ad5293\ad5293.c
-
 adc\adc.c
 
 ibus\buffer.c

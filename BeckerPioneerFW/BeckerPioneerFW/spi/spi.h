@@ -22,6 +22,5 @@
 
 void spi_init(void);
 void spi_write (uint8_t data);
-void spi_write16 (uint16_t data);
 
 #endif /* SPI_H_ */
