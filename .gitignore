@@ -58,6 +58,10 @@ eagle.epf
 *.ko
 *.obj
 *.elf
+*.eep
+*.elf
+*.lss
+*.srec
 
 # Linker output
 *.ilk
