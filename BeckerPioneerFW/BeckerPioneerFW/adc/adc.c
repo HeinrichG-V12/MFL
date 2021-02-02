@@ -20,6 +20,6 @@ void adc_init (void)
 
 ISR(ADC_vect)
 {
-	uint16_t adc_raw_value = ADC;
-	adc_value = adc_raw_value >> 2;	
+	uint16_t adc_raw_value = ADCL | (ADCH << 8);
+	adc_value = (adc_raw_value >> 2);
 }

@@ -5,7 +5,6 @@
  *  Author: Heinrich
  */ 
 
-
 #ifndef MCP42XXX_H_
 #define MCP42XXX_H_
 
