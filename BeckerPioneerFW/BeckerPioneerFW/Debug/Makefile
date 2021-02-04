@@ -36,7 +36,6 @@ SUBDIRS :=  \
 ../ibus \
 ../adc \
 ../ibus_processor \
-../ad5293 \
 ../mcp42050 \
 ../radio_control \
 ../uart \

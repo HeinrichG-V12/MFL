@@ -60,14 +60,30 @@ void becker_init_timer (void)
 	TIMSK4 |= (1 << TOIE4);
 }
 
+/*
 // timer zum senden des Release Befehls, Timer feuert alle 80ms
 void release_timer (void)
 {
 	TCNT4 = 64286;
-	TCCR4B |= (1 << CS42)|(1 << CS40);
+	TCCR4B |= (1 << CS42)|(1 << CS40);	// prescaler 1024
+	TIMSK4 |= (1 << TOIE4);
+}
+*/
+
+// timer zum senden des Release Befehls, Timer feuert alle 10ms
+void release_timer (void)
+{
+	TCNT4 = 63036;
+	TCCR4B |= (1 << CS41)|(1 << CS40);	// prescaler 64
 	TIMSK4 |= (1 << TOIE4);
 }
 
+void disable_release_timer (void)
+{
+	TCCR4B &= ~((1 << CS41)|(1 << CS40));
+}
+
+// update der Tastenbeleuchtung
 void scheduler_init (void)
 {
 	TCNT3 = SCHEDULER_PRELOAD;
@@ -80,11 +96,6 @@ void becker_disable_init_timer (void)
 	TCCR4B &= ~(0 << CS42);
 }
 
-void disable_release_timer (void)
-{
-	TCCR4B &= ~((1 << CS42)|(1 << CS40));
-}
-
 ISR(TIMER3_OVF_vect)
 {
 	TCNT3 = SCHEDULER_PRELOAD;
@@ -94,6 +105,7 @@ ISR(TIMER3_OVF_vect)
 ISR(TIMER4_OVF_vect)
 {
 	static uint8_t msgCounter = 0;
+	static uint8_t timerEventCounter = 0;
 	
 	if(_is_in_init)
 	{
@@ -112,9 +124,21 @@ ISR(TIMER4_OVF_vect)
 	
 	if(_to_be_released)
 	{
-		becker_send_release();
-		pioneer_send_release();
-		_to_be_released = false;
-		disable_release_timer();
+		
+		
+		if (timerEventCounter == 8)
+		{
+			becker_send_release();
+		}
+		
+		if (timerEventCounter == 10)
+		{
+			pioneer_send_release();
+			_to_be_released = false;
+			disable_release_timer();
+			timerEventCounter = 0;
+		}
+		
+		timerEventCounter++;
 	}
 }

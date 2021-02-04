@@ -14,8 +14,9 @@ void spi_init(void)
 	// spi master, 2 divider = 8MHz spi freq
 	//SPCR |= (1 << SPE)|(1 << MSTR)|(1 << SPI2X);
 	
-	// spi master, 4 divider = 4MHz spi freq
+	// spi master, 2 divider = 8MHz spi freq (mcp42xxx max 10mhz )
 	SPCR |= (1 << SPE)|(1 << MSTR);
+	SPSR |= (1 << SPI2X); // f_cpu / 2
 }
 
 void spi_write (uint8_t data)

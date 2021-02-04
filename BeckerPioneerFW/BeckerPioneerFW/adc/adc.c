@@ -7,7 +7,7 @@
 
 #include "adc.h"
 
-uint8_t adc_value = 0;
+volatile uint8_t adc_value = 0;
 
 void adc_init (void)
 {
