@@ -27,12 +27,7 @@ int main(void)
 	
 	ports_pins_init();
 	pioneer_init();
-	pioneer_source();
-	pioneer_next();
-	pioneer_previous();
-	pioneer_volume_increase();
-	pioneer_volume_decrease();
-	
+
 	/*
 	sei();
 	adc_init();
