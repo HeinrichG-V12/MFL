@@ -15,6 +15,7 @@
 #endif
 
 #include <avr/io.h>
+#include "core/core.h"
 #include "adc/adc.h"
 #include "ibus_processor/ibus_processor.h"
 #include "radio_control/radio_controller.h"
@@ -24,6 +25,15 @@ int main(void)
 	uint8_t* msg;
 	uint8_t depth = 0;
 	
+	ports_pins_init();
+	pioneer_init();
+	pioneer_source();
+	pioneer_next();
+	pioneer_previous();
+	pioneer_volume_increase();
+	pioneer_volume_decrease();
+	
+	/*
 	sei();
 	adc_init();
 	ibus_init();
@@ -40,5 +50,8 @@ int main(void)
 			rx_buffer_remove_entry();
 		}
     }
+	*/
+	
+	while(1){}
 }
 

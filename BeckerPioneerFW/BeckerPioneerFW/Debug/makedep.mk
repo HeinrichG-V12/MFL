@@ -4,6 +4,8 @@
 
 adc\adc.c
 
+core\core.c
+
 ibus\buffer.c
 
 ibus\ibus.c
@@ -12,7 +14,7 @@ ibus_processor\ibus_processor.c
 
 main.c
 
-mcp42050\mcp42xxx.c
+mcp42xxx\mcp42xxx.c
 
 radio_control\becker.c
 

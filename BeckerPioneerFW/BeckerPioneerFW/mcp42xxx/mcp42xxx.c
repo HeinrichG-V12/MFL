@@ -9,18 +9,14 @@
 #include "../timer/timer.h"
 
 void mcp42xxx_init(void)
-{
-	// configure as outputs
-	MCP_HW_INT |= (1 << MCP_SHDN)|(1 << MCP_RST);
-	
-	// put mcp42xxx into shutdown, terminal A is disconnected and wiper connected to terminal B
-	MCP_HW_SHDN();
-	
+{	
 	// reset mcp42xxx to bring the wipers to mid-scale and let them in shutdown mode until !SHDN goes high 
 	MCP_HW_RESET();
 	// wait at least 150ns and goes up
-	timer_delay_ms(2);
+	timer_delay_ms(1);
 	MCP_HW_RESET_END();
+	timer_delay_ms(1);
+	MCP_HW_SHDN();
 }
 
 void mcp42xxx_write (uint8_t channel, uint8_t value)
@@ -32,6 +28,16 @@ void mcp42xxx_write (uint8_t channel, uint8_t value)
 }
 
 void mcp42xxx_release (void)
+{
+	MCP_HW_SHDN();
+}
+
+void mcp42xxx_wakeup (void)
+{
+	MCP_HW_SHDN_END();	
+}
+
+void mcp42xxx_shutdown (void)
 {
 	MCP_HW_SHDN();
 }

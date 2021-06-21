@@ -13,12 +13,7 @@
 extern bool _is_in_init;
 extern bool _to_be_released;
 
-void pioneer_init (void)
-{
-	DDRB &= ~(1 << DDB4);
-	spi_init();	
-	mcp42xxx_init();
-}
+void pioneer_init (void){}
 
 void pioneer_source(void)
 {	
@@ -29,7 +24,6 @@ void pioneer_source(void)
 void pioneer_mute(void)
 {
 	// 4k4
-	
 	mcp42xxx_write(FIRST_POT, 241);
 	mcp42xxx_write(SECOND_POT, 251);
 }
@@ -52,13 +46,13 @@ void pioneer_next_long(void)
 	mcp42xxx_write(SECOND_POT, 230);
 }
 
-void pioneer_back(void)
+void pioneer_previous(void)
 {
 	mcp42xxx_write(FIRST_POT, 225);
 	mcp42xxx_write(SECOND_POT, 229);
 }
 
-void pioneer_back_long(void)
+void pioneer_previous_long(void)
 {
 	mcp42xxx_write(FIRST_POT, 225);
 	mcp42xxx_write(SECOND_POT, 229);

@@ -13,8 +13,7 @@
 #include <avr/io.h>
 #include <stdint.h>
 
-#include "../mcp42050/mcp42xxx.h"
-
+#include "../mcp42xxx/mcp42xxx.h"
 
 // pioneer_2 = PB4
 // is still input!
@@ -25,8 +24,8 @@ void pioneer_mute (void);
 void pioneer_list (void);
 void pioneer_next (void);
 void pioneer_next_long (void);
-void pioneer_back (void);
-void pioneer_back_long (void);
+void pioneer_previous (void);
+void pioneer_previous_long (void);
 void pioneer_volume_increase (void);
 void pioneer_volume_decrease (void);
 void pioneer_select (void);

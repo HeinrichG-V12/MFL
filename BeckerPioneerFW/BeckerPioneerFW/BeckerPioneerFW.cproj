@@ -41,7 +41,7 @@
       </framework-data>
     </AsfFrameworkConfig>
     <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
-    <avrtoolserialnumber>J41800050362</avrtoolserialnumber>
+    <avrtoolserialnumber>J41800050374</avrtoolserialnumber>
     <avrdeviceexpectedsignature>0x1E9802</avrdeviceexpectedsignature>
     <com_atmel_avrdbg_tool_atmelice>
       <ToolOptions>
@@ -51,7 +51,7 @@
         <InterfaceName>JTAG</InterfaceName>
       </ToolOptions>
       <ToolType>com.atmel.avrdbg.tool.atmelice</ToolType>
-      <ToolNumber>J41800050362</ToolNumber>
+      <ToolNumber>J41800050374</ToolNumber>
       <ToolName>Atmel-ICE</ToolName>
     </com_atmel_avrdbg_tool_atmelice>
     <avrtoolinterface>JTAG</avrtoolinterface>
@@ -144,6 +144,12 @@
     <Compile Include="adc\adc.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="core\core.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="core\core.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="ibus\buffer.c">
       <SubType>compile</SubType>
     </Compile>
@@ -165,10 +171,10 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcp42050\mcp42xxx.c">
+    <Compile Include="mcp42xxx\mcp42xxx.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcp42050\mcp42xxx.h">
+    <Compile Include="mcp42xxx\mcp42xxx.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="radio_control\becker.c">
@@ -215,7 +221,8 @@
     <Folder Include="ibus" />
     <Folder Include="adc" />
     <Folder Include="ibus_processor" />
-    <Folder Include="mcp42050" />
+    <Folder Include="mcp42xxx" />
+    <Folder Include="core" />
     <Folder Include="radio_control" />
     <Folder Include="uart" />
     <Folder Include="timer" />

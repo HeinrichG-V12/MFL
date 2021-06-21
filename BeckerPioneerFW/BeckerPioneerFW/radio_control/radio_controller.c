@@ -50,7 +50,7 @@ void controller_next (void)
 void controller_back (void)
 {
 	becker_back();
-	pioneer_back();
+	pioneer_previous();
 	controller_release();
 }
 
@@ -83,13 +83,13 @@ void controller_exec_search_down (void)
 	{
 		// langes druecken detektiert
 		becker_back_long();
-		pioneer_back_long();
+		pioneer_previous_long();
 	}
 	else
 	{
 		// kurzes druecken detektiert
 		becker_back();
-		pioneer_back();
+		pioneer_previous();
 	}
 		
 	controller_release();

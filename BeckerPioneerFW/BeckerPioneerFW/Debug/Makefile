@@ -36,7 +36,8 @@ SUBDIRS :=  \
 ../ibus \
 ../adc \
 ../ibus_processor \
-../mcp42050 \
+../mcp42xxx \
+../core \
 ../radio_control \
 ../uart \
 ../timer \
@@ -46,11 +47,12 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../adc/adc.c \
+../core/core.c \
 ../ibus/buffer.c \
 ../ibus/ibus.c \
 ../ibus_processor/ibus_processor.c \
 ../main.c \
-../mcp42050/mcp42xxx.c \
+../mcp42xxx/mcp42xxx.c \
 ../radio_control/becker.c \
 ../radio_control/pioneer.c \
 ../radio_control/radio_controller.c \
@@ -67,11 +69,12 @@ ASM_SRCS +=
 
 OBJS +=  \
 adc/adc.o \
+core/core.o \
 ibus/buffer.o \
 ibus/ibus.o \
 ibus_processor/ibus_processor.o \
 main.o \
-mcp42050/mcp42xxx.o \
+mcp42xxx/mcp42xxx.o \
 radio_control/becker.o \
 radio_control/pioneer.o \
 radio_control/radio_controller.o \
@@ -81,11 +84,12 @@ uart/uart.o
 
 OBJS_AS_ARGS +=  \
 adc/adc.o \
+core/core.o \
 ibus/buffer.o \
 ibus/ibus.o \
 ibus_processor/ibus_processor.o \
 main.o \
-mcp42050/mcp42xxx.o \
+mcp42xxx/mcp42xxx.o \
 radio_control/becker.o \
 radio_control/pioneer.o \
 radio_control/radio_controller.o \
@@ -95,11 +99,12 @@ uart/uart.o
 
 C_DEPS +=  \
 adc/adc.d \
+core/core.d \
 ibus/buffer.d \
 ibus/ibus.d \
 ibus_processor/ibus_processor.d \
 main.d \
-mcp42050/mcp42xxx.d \
+mcp42xxx/mcp42xxx.d \
 radio_control/becker.d \
 radio_control/pioneer.d \
 radio_control/radio_controller.d \
@@ -109,11 +114,12 @@ uart/uart.d
 
 C_DEPS_AS_ARGS +=  \
 adc/adc.d \
+core/core.d \
 ibus/buffer.d \
 ibus/ibus.d \
 ibus_processor/ibus_processor.d \
 main.d \
-mcp42050/mcp42xxx.d \
+mcp42xxx/mcp42xxx.d \
 radio_control/becker.d \
 radio_control/pioneer.d \
 radio_control/radio_controller.d \
@@ -136,6 +142,13 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 adc/adc.o: ../adc/adc.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2561 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2561" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+core/core.o: ../core/core.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2561 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2561" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -170,7 +183,7 @@ ibus_processor/ibus_processor.o: ../ibus_processor/ibus_processor.c
 	@echo Finished building: $<
 	
 
-mcp42050/mcp42xxx.o: ../mcp42050/mcp42xxx.c
+mcp42xxx/mcp42xxx.o: ../mcp42xxx/mcp42xxx.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2561 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2561" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

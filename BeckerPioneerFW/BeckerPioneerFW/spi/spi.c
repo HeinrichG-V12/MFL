@@ -9,7 +9,6 @@
 
 void spi_init(void)
 {
-	DDR_SPI |= (1 << DD_MOSI)|(1 << DD_SCK)|(1 << DD_CS);
 	SELECT_CS();
 	// spi master, 2 divider = 8MHz spi freq
 	//SPCR |= (1 << SPE)|(1 << MSTR)|(1 << SPI2X);
