@@ -12,8 +12,8 @@
 #include <stdbool.h>
 #include <avr/interrupt.h>
 
-extern bool _is_in_init;
-extern bool _to_be_released;
+extern volatile bool _is_in_init;
+extern volatile bool _to_be_released;
 
 void timer0_init(void)
 {
@@ -71,14 +71,14 @@ void release_timer (void)
 */
 
 // timer zum senden des Release Befehls, Timer feuert alle 10ms
-void release_timer (void)
+void start_release_timer (void)
 {
 	TCNT4 = 63036;
 	TCCR4B |= (1 << CS41)|(1 << CS40);	// prescaler 64
 	TIMSK4 |= (1 << TOIE4);
 }
 
-void disable_release_timer (void)
+void stop_release_timer (void)
 {
 	TCCR4B &= ~((1 << CS41)|(1 << CS40));
 }
@@ -93,7 +93,7 @@ void scheduler_init (void)
 
 void becker_disable_init_timer (void)
 {
-	TCCR4B &= ~(0 << CS42);
+	TCCR4B &= ~(1 << CS42);
 }
 
 ISR(TIMER3_OVF_vect)
@@ -103,9 +103,9 @@ ISR(TIMER3_OVF_vect)
 }
 
 ISR(TIMER4_OVF_vect)
-{
-	static uint8_t msgCounter = 0;
+{	
 	static uint8_t timerEventCounter = 0;
+	static uint8_t msgCounter = 0;
 	
 	if(_is_in_init)
 	{
@@ -124,8 +124,9 @@ ISR(TIMER4_OVF_vect)
 	
 	if(_to_be_released)
 	{
-		
-		
+		TCNT4 = 63036;
+		timerEventCounter++;
+				
 		if (timerEventCounter == 8)
 		{
 			becker_send_release();
@@ -135,10 +136,8 @@ ISR(TIMER4_OVF_vect)
 		{
 			pioneer_send_release();
 			_to_be_released = false;
-			disable_release_timer();
+			stop_release_timer();
 			timerEventCounter = 0;
 		}
-		
-		timerEventCounter++;
 	}
 }

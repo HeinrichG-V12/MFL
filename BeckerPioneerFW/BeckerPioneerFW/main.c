@@ -26,13 +26,12 @@ int main(void)
 	uint8_t depth = 0;
 	
 	ports_pins_init();
-	pioneer_init();
-
-	/*
-	sei();
+	spi_init();
 	adc_init();
 	ibus_init();
 	controller_init();
+	sei();
+
 
     while (1)
     {
@@ -45,7 +44,6 @@ int main(void)
 			rx_buffer_remove_entry();
 		}
     }
-	*/
 	
 	while(1){}
 }

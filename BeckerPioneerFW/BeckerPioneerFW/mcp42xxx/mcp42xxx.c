@@ -13,9 +13,9 @@ void mcp42xxx_init(void)
 	// reset mcp42xxx to bring the wipers to mid-scale and let them in shutdown mode until !SHDN goes high 
 	MCP_HW_RESET();
 	// wait at least 150ns and goes up
-	timer_delay_ms(1);
+	timer_delay_ms(2);
 	MCP_HW_RESET_END();
-	timer_delay_ms(1);
+	timer_delay_ms(2);
 	MCP_HW_SHDN();
 }
 

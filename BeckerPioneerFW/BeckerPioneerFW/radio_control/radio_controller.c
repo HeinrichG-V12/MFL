@@ -7,16 +7,15 @@
 
 #include "radio_controller.h"
 
-bool _is_in_init = false;
-bool _to_be_released = false;
-
-bool _search_long = false;
-bool _micro_long = false;
+volatile bool _is_in_init = false;
+volatile bool _to_be_released = false;
+volatile bool _search_long = false;
+volatile bool _micro_long = false;
 
 void controller_release (void)
 {
 	_to_be_released = true;
-	release_timer();
+	start_release_timer();
 }
 
 void controller_init (void)

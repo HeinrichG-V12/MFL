@@ -30,7 +30,6 @@ void pioneer_volume_increase (void);
 void pioneer_volume_decrease (void);
 void pioneer_select (void);
 void pioneer_mode (void);
-void pioneer_release(void);
 void pioneer_send_release (void);
 
 #endif /* PIONEER_H_ */
