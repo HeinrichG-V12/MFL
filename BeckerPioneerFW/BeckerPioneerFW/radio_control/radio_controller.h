@@ -9,7 +9,6 @@
 #ifndef RADIO_CONTROLLER_H_
 #define RADIO_CONTROLLER_H_
 
-#include "becker.h"
 #include "pioneer.h"
 #include "../timer/timer.h"
 #include <stdbool.h>

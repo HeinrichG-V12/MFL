@@ -16,8 +16,6 @@ main.c
 
 mcp42xxx\mcp42xxx.c
 
-radio_control\becker.c
-
 radio_control\pioneer.c
 
 radio_control\radio_controller.c

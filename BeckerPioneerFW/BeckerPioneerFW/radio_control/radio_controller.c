@@ -22,33 +22,28 @@ void controller_init (void)
 {
 	// connect to becker and shutdown both pots
 	pioneer_init();
-	becker_init();
 }
 
 void controller_volume_increase (void)
 {
-	becker_volume_increase();
 	pioneer_volume_increase();
 	controller_release();
 }
 
 void controller_volume_decrease (void)
 {
-	becker_volume_decrease();
 	pioneer_volume_decrease();
 	controller_release();
 }
 
 void controller_next (void)
 {
-	becker_next();
 	pioneer_next();
 	controller_release();
 }
 
 void controller_back (void)
 {
-	becker_back();
 	pioneer_previous();
 	controller_release();
 }
@@ -63,13 +58,11 @@ void controller_exec_search_up (void)
 	if (_search_long) 
 	{
 		// langes druecken detektiert
-		becker_next_long();
 		pioneer_next_long();
 	}
 	else
 	{
 		// kurzes druecken detektiert	
-		becker_next();	
 		pioneer_next();
 	}
 	
@@ -81,13 +74,11 @@ void controller_exec_search_down (void)
 	if (_search_long)
 	{
 		// langes druecken detektiert
-		becker_back_long();
 		pioneer_previous_long();
 	}
 	else
 	{
 		// kurzes druecken detektiert
-		becker_back();
 		pioneer_previous();
 	}
 		
