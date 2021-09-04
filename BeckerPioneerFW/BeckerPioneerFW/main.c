@@ -27,11 +27,10 @@ int main(void)
 	
 	ports_pins_init();
 	spi_init();
-	adc_init();
+	// adc_init();
 	ibus_init();
 	controller_init();
 	sei();
-
 
     while (1)
     {

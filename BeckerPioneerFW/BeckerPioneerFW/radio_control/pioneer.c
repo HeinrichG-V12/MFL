@@ -18,8 +18,8 @@ void pioneer_init (void)
 
 void pioneer_source(void)
 {	
-	mcp42xxx_write(FIRST_POT, 250);
-	mcp42xxx_write(SECOND_POT, 250);
+	mcp42xxx_write(FIRST_POT, 252);
+	mcp42xxx_write(SECOND_POT, 252);
 	mcp42xxx_wakeup();
 }
 
@@ -47,15 +47,7 @@ void pioneer_next(void)
 
 void pioneer_next_long(void)
 {
-	/*
-	mcp42xxx_write(FIRST_POT, 240);
-	mcp42xxx_write(SECOND_POT, 230);
-	mcp42xxx_wakeup();
-	*/
-	
-	mcp42xxx_write(FIRST_POT, 253);
-	mcp42xxx_write(SECOND_POT, 254);
-	mcp42xxx_wakeup();
+	pioneer_source();
 }
 
 void pioneer_previous(void)
@@ -67,9 +59,7 @@ void pioneer_previous(void)
 
 void pioneer_previous_long(void)
 {
-	mcp42xxx_write(FIRST_POT, 225);
-	mcp42xxx_write(SECOND_POT, 229);
-	mcp42xxx_wakeup();
+	pioneer_source();
 }
 
 void pioneer_volume_increase(void)

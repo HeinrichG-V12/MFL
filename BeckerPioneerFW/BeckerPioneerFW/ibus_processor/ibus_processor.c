@@ -105,7 +105,7 @@ void ibus_processor (uint8_t *msg)
 								break;
 								
 								case SEARCH_DOWN_LONG:
-									controller_set_search(false);
+									controller_set_search(true);
 								break;
 								
 								case SEARCH_DOWN_RELEASE:
